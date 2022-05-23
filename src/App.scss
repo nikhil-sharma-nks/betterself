@@ -17,29 +17,39 @@
   --black: #212529;
   --bg-grey: #eceae8;
   --text-grey: #9a9a9a;
+
+  --default-transition: all 0.5s ease-in-out;
+  --grid-template: repeat(1fr, 10);
+  --grid-child-1: 1 / span 1;
+  --grid-child-2: 2 / span 9;
 }
 
-.dark-theme {
+.theme-dark {
   --background-color: rgba(33, 33, 33, 0.98);
   --body-background-color: #181818;
   --text-color: #ffffff;
-  --text-color-secondary: #aaaaaa;
-  --search-box-background-color: hsl(0, 0%, 7%);
-  --search-box-text-color: hsla(0, 100%, 100%, 0.88);
-  --border-color: hsl(0, 0%, 18.82%);
-  --drawer-item-hover: hsl(0, 0%, 20%);
-  --cateogry-pills-background-color: rgba(255, 255, 255, 0.1);
-  --cateogry-pills-hover: rgba(255, 255, 255, 0.2);
+  --background-color-secondary: hsl(0, 0%, 37%);
+  --category-pills-background-color: rgba(255, 255, 255, 0.1);
 }
-.light-theme {
+.theme-light {
   --background-color: #ffffff;
   --body-background-color: #f9f9f9;
   --text-color: #030303;
-  --text-color-secondary: #606060;
-  --search-box-background-color: #ffffff;
-  --search-box-text-color: #3f4049;
-  --border-color: #ccc;
-  --drawer-item-hover: rgba(0, 0, 0, 0.05);
-  --cateogry-pills-background-color: rgba(0, 0, 0, 0.05);
-  --cateogry-pills-hover: rgba(0, 0, 0, 0.1);
+  --background-color-secondary: rgba(0, 0, 0, 0.05);
+  --category-pills-background-color: rgba(0, 0, 0, 0.05);
+}
+
+.main-body {
+  color: var(--text-color);
+  background-color: var(--body-background-color);
+  min-height: calc(100vh - 4rem);
+  transition: var(--default-transition);
+  width: 100%;
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: var(--grid-template);
+  min-height: calc(100vh - 4rem);
+  width: 100%;
 }
