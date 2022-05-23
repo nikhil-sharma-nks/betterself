@@ -1,0 +1,41 @@
+.home-page {
+  grid-column: var(--grid-child-2);
+  .category-pill-container {
+    display: flex;
+    height: 4rem;
+    align-items: center;
+    background-color: var(--category-pills-background-color);
+    border-bottom: 1px solid var(--text-color);
+
+    .category-pill {
+      border: 1px solid var(--text-color);
+      border-radius: 30px;
+      padding: 5px 10px;
+      margin-left: 1rem;
+      cursor: pointer;
+    }
+    :hover,
+    .category-pill-active {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-color: var(--white);
+    }
+  }
+  .dropdown {
+    background-color: var(--category-pills-background-color);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--text-color);
+    height: 3rem;
+    .select-box {
+      width: 12rem;
+      margin-left: 1rem;
+    }
+  }
+  .dropdown:hover {
+    .dropdown-content {
+      display: block;
+      z-index: 5;
+    }
+  }
+}
