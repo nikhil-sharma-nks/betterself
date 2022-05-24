@@ -16,7 +16,7 @@ const Sidebar = () => {
     },
     {
       name: 'Liked',
-      link: '/liked-videos',
+      link: '/likes',
       icon: <i className='fa-solid fa-thumbs-up mr-3'></i>,
     },
     {
