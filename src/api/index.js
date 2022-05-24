@@ -1,1 +1,8 @@
-export { getAllProducts, getAllCategories } from './videoService';
+export {
+  getAllProducts,
+  getAllCategories,
+  getUserLikedVideos,
+  addToLikedVideos,
+  deleteFromLikedVideos,
+} from './videoService';
+export { loginUser, signupUser } from './authService';
