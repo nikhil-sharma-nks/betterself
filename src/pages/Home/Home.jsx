@@ -3,7 +3,7 @@ import './home.scss';
 import { getAllProducts, getAllCategories } from '../../api';
 import { useVideo, useTheme } from '../../context';
 import Select from 'react-select';
-import { VideoContainer, Spinner } from '../../components';
+import { VideoContainer, Spinner, Sidebar } from '../../components';
 
 const Home = () => {
   const { videoState, videoDispatch } = useVideo();
@@ -68,35 +68,38 @@ const Home = () => {
   };
 
   return (
-    <div className='main-body home-page'>
-      <div className='category-pill-container'>
-        {categories.map((category) => (
-          <div
-            className={
-              categorizedBy !== category.categoryName
-                ? 'category-pill'
-                : 'category-pill category-pill-active'
-            }
-            onClick={() => handleCategoryClick(category.categoryName)}
-            key={category.id}
-          >
-            {category.categoryName.charAt(0).toUpperCase() +
-              category.categoryName.slice(1)}
-          </div>
-        ))}
+    <div className='app-body'>
+      <Sidebar />
+      <div className='main-body home-page '>
+        <div className='category-pill-container'>
+          {categories.map((category) => (
+            <div
+              className={
+                categorizedBy !== category.categoryName
+                  ? 'category-pill'
+                  : 'category-pill category-pill-active'
+              }
+              onClick={() => handleCategoryClick(category.categoryName)}
+              key={category.id}
+            >
+              {category.categoryName.charAt(0).toUpperCase() +
+                category.categoryName.slice(1)}
+            </div>
+          ))}
+        </div>
+        <div className='filter-container dropdown'>
+          <Select
+            defaultValue={selectedOption}
+            onChange={handleChange}
+            options={options}
+            styles={styles}
+            placeholder='Sort By'
+            className='select-box'
+            isClearable
+          />
+        </div>
+        {loading ? <Spinner /> : <VideoContainer />}
       </div>
-      <div className='filter-container dropdown'>
-        <Select
-          defaultValue={selectedOption}
-          onChange={handleChange}
-          options={options}
-          styles={styles}
-          placeholder='Sort By'
-          className='select-box'
-          isClearable
-        />
-      </div>
-      {loading ? <Spinner /> : <VideoContainer />}
     </div>
   );
 };
