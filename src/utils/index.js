@@ -1,1 +1,6 @@
-export { getVideosByFilter, getvideosBySort, searchVideos } from './videoUtil';
+export {
+  getVideosByFilter,
+  getvideosBySort,
+  searchVideos,
+  isVideosInLiked,
+} from './videoUtil';

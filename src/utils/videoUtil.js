@@ -31,4 +31,9 @@ const searchVideos = (query, videos) => {
   );
   return searchvideos;
 };
-export { getVideosByFilter, getvideosBySort, searchVideos };
+
+const isVideosInLiked = (id, videos) => {
+  const foundInLiked = videos?.find((video) => video._id === id);
+  return foundInLiked ? true : false;
+};
+export { getVideosByFilter, getvideosBySort, searchVideos, isVideosInLiked };
