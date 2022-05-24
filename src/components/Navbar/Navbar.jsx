@@ -2,24 +2,24 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useVideo, useTheme } from '../../context';
 import './navbar.scss';
-// import { makeToast } from '../../components';
+import { useAuth } from '../../context';
+import { makeToast } from '../../components';
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { videoState, videoDispatch } = useVideo();
   const { theme, toggleTheme } = useTheme();
-  const authState = { isAuth: false, token: '', user: {} };
-  // const { authState, authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const { searchQuery } = videoState;
-  // const handleLogout = () => {
-  //   makeToast('You Are Now Logged Out', 'success');
-  //   authDispatch({
-  //     type: 'LOGOUT',
-  //   });
-  //   productDispatch({ type: 'LOGOUT' });
-  //   navigate('/');
-  // };
+  const handleLogout = () => {
+    makeToast('You Are Now Logged Out', 'success');
+    authDispatch({
+      type: 'LOGOUT',
+    });
+    videoDispatch({ type: 'LOGOUT' });
+    navigate('/');
+  };
   const handleFocus = () => {
     // if (location.pathname === '/') {
     //   navigate('/');
@@ -75,7 +75,7 @@ const Navbar = () => {
               </div>
               <div className='dropdown-content'>
                 <div>Profile</div>
-                <div>Logout</div>
+                <div onClick={handleLogout}>Logout</div>
               </div>
             </div>
           ) : (
