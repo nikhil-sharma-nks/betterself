@@ -4,7 +4,7 @@
  * */
 export const videos = [
   {
-    id: 'AT5RfsJvt94',
+    _id: 'AT5RfsJvt94',
     title: 'What is Spirituality?',
     description:
       'Sandeep Maheshwari is a name among millions who struggled, failed and surged ahead in search of success, happiness and contentment. Just like any middle class guy, he too had a bunch of unclear dreams and a blurred vision of his goals in life. All he had was an undying learning attitude to hold on to. Rowing through ups and downs, it was time that taught him the true meaning of his life.',
@@ -15,7 +15,7 @@ export const videos = [
     likes: '14K',
   },
   {
-    id: 'fdHjqVEQvLw',
+    _id: 'fdHjqVEQvLw',
     title: 'How Do You Get Started With Spirituality? | Sadhguru',
     description:
       'Sadhguru explains that everyone is already on the spiritual path. The desire for more money, power, knowledge or anything else is a spiritual process too, but mostly misguided and conducted unconsciously. What needs to be done is to become more conscious and aware.',
@@ -26,7 +26,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'T4Zalqy9WP4',
+    _id: 'T4Zalqy9WP4',
     title: 'How Science Explains Spirituality ft. Abhijit Pradhan',
     description:
       'The present scene includes an immensely intense discussion in regards to the universe of quantum material science politeness of one of the most well-read Indian men alive - Abhijit Pradhan. A specialist with regards to the field of quantum material science and the utilization of the equivalent in the realm of vitality mending otherwise called Reiki. There is a great deal of hypothesis with regards to the universe of otherworldliness and different parts of the equivalent identified with reiki recuperating',
@@ -37,7 +37,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: 'xum35-XplNY',
+    _id: 'xum35-XplNY',
     title: 'What Is the Point of Spirituality?',
     description:
       'A lot of people are - rightly - very sceptical of what goes on under the word spirituality. But might there be something of value nevertheless in aspects of what people call the spiritual? A short guide to what a highly rational mind might learn to appreciate within the concept of the spiritual.',
@@ -48,7 +48,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'n3DrRbCMg_o',
+    _id: 'n3DrRbCMg_o',
     title:
       'Being Religious vs. Spiritual - The Real Difference? ft. Gaur Gopal Das | TRS Clips',
     description:
@@ -60,7 +60,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: 'knaV_tvkEY4',
+    _id: 'knaV_tvkEY4',
     title: 'Growing Spiritually Every Moment, Second and Day | Sadhguru',
     description:
       "Sadhguru speaks about the spiritual process as being a journey from untruth to truth. Untruth essentially means being entangled in one's identifications. Going beyond these limitations is a way of realizing truth or one's ultimate nature.​",
@@ -71,7 +71,7 @@ export const videos = [
     likes: '12K',
   },
   {
-    id: 'CFtsHf1lVI4',
+    _id: 'CFtsHf1lVI4',
     title: 'Psychosis or Spiritual Awakening: Phil Borges at TEDxUMKC',
     description:
       'Phil Borges, filmmaker and photographer, has been documenting indigenous and tribal cultures for over 25 years. His work is exhibited in museums and galleries worldwide and his documentary film CRAZYWISE explores what can be learned from individuals who have turned their psychological crisis into a positive transformative experience.',
@@ -82,7 +82,7 @@ export const videos = [
     likes: '12K',
   },
   {
-    id: 'uQW7X11o07I',
+    _id: 'uQW7X11o07I',
     title: 'Spirituality In Practical Life: Ep 40: BK Shivani (Hindi)',
     description:
       'When we experiment with knowledge and experience it, the result becomes truth for us. It now is a part of our vibrations. The conviction with which we share with others inspires them to experiment too. Spirituality is not separate from our day to day life. Spirituality gives us the tools which we use in our personal, family and professional life.',
@@ -93,7 +93,7 @@ export const videos = [
     likes: '18K',
   },
   {
-    id: 'xE2iZu9E81I',
+    _id: 'xE2iZu9E81I',
     title: 'Everything You Need to Know About Spirituality in 2 Minutes',
     description:
       'In this short video, you discover the most important aspects of Spirituality and how a human birth and a Guru is essential for it. Gurudev inspires us to achieve our highest potential and offers us the remedy to counter the biggest obstacle we face on our road to enlightenment.',
@@ -104,7 +104,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: 'BuBDmIRThtk',
+    _id: 'BuBDmIRThtk',
     title:
       'Lisa Miller, PhD On The Neuroscience Of Spirituality | Rich Roll Podcast',
     description:
@@ -116,7 +116,7 @@ export const videos = [
     likes: '13K',
   },
   {
-    id: 'inpok4MKVLM',
+    _id: 'inpok4MKVLM',
     title: '5-Minute Meditation You Can Do Anywhere',
     description: 'In just 5 minutes you can reset your day in a positive way.',
     creator: 'Goodful',
@@ -126,7 +126,7 @@ export const videos = [
     likes: '20K',
   },
   {
-    id: 'Hzi3PDz1AWU',
+    _id: 'Hzi3PDz1AWU',
     title: 'How to Meditate for Beginners | Sadhguru',
     description:
       'Sadhguru goes in depth about what meditation really is and clarifies common misunderstandings that meditation is a practice.',
@@ -138,7 +138,7 @@ export const videos = [
   },
 
   {
-    id: 'EwQkfoKxRvo',
+    _id: 'EwQkfoKxRvo',
     title:
       'Isha Kriya: A Guided Meditation For Health And Wellbeing | 15-Minutes',
     description:
@@ -150,7 +150,7 @@ export const videos = [
     likes: '13K',
   },
   {
-    id: 'ECHxnCJYrpM',
+    _id: 'ECHxnCJYrpM',
     title:
       'Powerful Meditation For The Mind | Guided Meditation By Gurudev Sri Sri Ravi Shankar',
     description: 'Wo5dMEP_BbI',
@@ -161,7 +161,7 @@ export const videos = [
     likes: '20K',
   },
   {
-    id: 'r3neFV38TJQ',
+    _id: 'r3neFV38TJQ',
     title: "Meditation's Impact on the Brain | Documentary Clip",
     description: 'This is a clip from the feature documentary "A Joyful Mind".',
     creator: 'A Joyful Mind',
@@ -171,7 +171,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: '7CBfCW67xT8',
+    _id: '7CBfCW67xT8',
     title:
       'How mindfulness changes the emotional life of our brains | Richard J. Davidson | TEDxSanFrancisco',
     description:
@@ -183,7 +183,7 @@ export const videos = [
     likes: '18K',
   },
   {
-    id: 'tZ5qIpJHeNU',
+    _id: 'tZ5qIpJHeNU',
     title: 'Science behind Depression | Dhruv Rathee',
     description:
       'In this video, I interview a neuroscientist and a doctor to bust the most common misconceptions and myths about Depression. Why depression happens, is it an illness? what are the best treatment ways for different cases? Are Anti-depressants bad for you? Should you consult a therapist or talk to friends and family? All these questions are answered here by Dr.Sumaiya Shaikh.',
@@ -194,7 +194,7 @@ export const videos = [
     likes: '18K',
   },
   {
-    id: '8Su5VtKeXU8',
+    _id: '8Su5VtKeXU8',
     title: 'How To Cope With Depression',
     description:
       "Depression doesn't have to ruin our lives. The most urgent thing we need to do is understand the ways in which depression is unlike sadness - and why self-understanding is the primary route to a cure.",
@@ -205,7 +205,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'MB5IX-np5fE',
+    _id: 'MB5IX-np5fE',
     title: "This could be why you're depressed or anxious | Johann Hari",
     description:
       "In a moving talk, journalist Johann Hari shares fresh insights on the causes of depression and anxiety from experts around the world -- as well as some exciting emerging solutions. \"If you're depressed or anxious, you're not weak and you're not crazy -- you're a human being with unmet needs,\" Hari says.",
@@ -216,7 +216,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: '_re6AX3Mi4s',
+    _id: '_re6AX3Mi4s',
     title:
       'Lift Depression With These 3 Prescriptions- Without-Pills | Susan Heitler | TEDxWilmington',
     description:
@@ -229,7 +229,7 @@ export const videos = [
   },
 
   {
-    id: 'z-IR48Mb3W0',
+    _id: 'z-IR48Mb3W0',
     title: 'What is depression? - Helen M. Farrell',
     description:
       'Depression is the leading cause of disability in the world; in the United States, close to ten percent of adults struggle with the disease. But because it’s a mental illness, it can be a lot harder to understand than, say, high cholesterol. Helen M. Farrell examines the symptoms and treatments of depression, and gives some tips for how you might help a friend who is suffering.',
@@ -240,7 +240,7 @@ export const videos = [
     likes: '14K',
   },
   {
-    id: 'fWFuQR_Wt4M',
+    _id: 'fWFuQR_Wt4M',
     title: 'What is Depression?',
     description:
       "Major depressive disorder is a mental illness with symptoms that affect a person's thoughts, feelings, and behaviors. Depression is widespread, but poorly understood. This video provides an overview of what depression actually is including discussion of symptoms, causes, and treatment.",
@@ -251,7 +251,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: 'Yy8e4sw70ow',
+    _id: 'Yy8e4sw70ow',
     title: 'Depression and its treatment',
     description:
       'Around one in every 10 people will suffer from depression. Brain regions that control mood are often disrupted in depression. Antidepressant drugs or behavioral therapy can offer some relief. By understanding the brain better, our ability to treat depression should also get a boost.',
@@ -262,7 +262,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: 'o3rGwIOvUZQ',
+    _id: 'o3rGwIOvUZQ',
     title: '7 Signs Of Depression',
     description:
       'Depression is a serious mental illness that affects one in 15 adults (6.7%) in any given year. One in six people will have experienced depression at one point in their life. In this video, we cover some of the common signs of depression including: change in sleep pattern, change in appetite, low self-esteem, lack of interest in previous activities (anhedonia), lack of energy, decrease self care, irritability, intrusive thoughts, self harm or suicidal thoughts. This video is not meant to be as a diagnosis, but if you relate to some of these signs, you might want to consider seeking professional help.',
@@ -273,7 +273,7 @@ export const videos = [
     likes: '18K',
   },
   {
-    id: 'OzO8EAOEGJ8',
+    _id: 'OzO8EAOEGJ8',
     title: 'How to Spot Severe Depression vs Feeling Depressed',
     description:
       'Depression is on a continuum. Severe depression is often overlooked or misconstrued. It is not the same as low-grade depression. Discover the differences and signs in this eye opening interview with Dr. Ramani Durvasula and MedCircle Host Kyle Kittleson.',
@@ -284,7 +284,7 @@ export const videos = [
     likes: '20K',
   },
   {
-    id: '1XCObQjSHIs',
+    _id: '1XCObQjSHIs',
     title: 'One Thing You Must Do to Overcome Anxiety | Sadhguru',
     description:
       'Sadhguru talks about how to overcome anxiety disorders without any kind of external support.',
@@ -295,7 +295,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'IzFObkVRSV0',
+    _id: 'IzFObkVRSV0',
     title:
       'What causes panic attacks, and how can you prevent them? - Cindy J. Aaronson',
     description:
@@ -307,7 +307,7 @@ export const videos = [
     likes: '13K',
   },
   {
-    id: '2wCbwpnIJsA',
+    _id: '2wCbwpnIJsA',
     title: 'Neuroscience of Anxiety',
     description:
       "Alie knows all about how stressful grad school can be. But what happens when stress is more than just stress? This week, we're talking about the neuroscience of anxiety. And for Alie, it's personal.",
@@ -318,7 +318,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: 'WslEaP3YNMI',
+    _id: 'WslEaP3YNMI',
     title: 'Understanding and treating anxiety disorders',
     description:
       'Professor Paul Salkovskis summarises the research of the Clinical Psychology group into anxiety and obsessive compulsive disorders.',
@@ -329,7 +329,7 @@ export const videos = [
     likes: '13K',
   },
   {
-    id: '-CAd9o9OlqM',
+    _id: '-CAd9o9OlqM',
     title: 'What is the Cycle of Anxiety?',
     description:
       'When left untreated and unaddressed, anxiety has a tendency to grow. This is explained by the cycle of anxiety.\n    When the uncomfortable symptoms of anxiety feel like too much, one of the simplest ways to feel better is avoidance. This means avoiding the source of anxiety, or numbing the uncomfortable feelings. The good news is, avoidance works... for a little bit. The bad news is, the relief that avoidance brings is temporary, and the anxiety tends to come back worse than before.',
@@ -340,7 +340,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: '85QY_d-8J2M',
+    _id: '85QY_d-8J2M',
     title: 'Anxiety: A Cancer of the Mind | Aneysha Bhat | TEDxUIUC',
     description:
       'The stereotype about anxiety has led to its definition being synonymous with fragility, weakness, and failure. Mental health is a misunderstood field, and the common misconceptions about it result in the development of stigma.\n    In this talk, Aneysha Bhat explores the prevalence of anxiety and how we can stand together to fight the stigma associated with mental health.',
@@ -351,7 +351,7 @@ export const videos = [
     likes: '20K',
   },
   {
-    id: 'xsEJ6GeAGb0',
+    _id: 'xsEJ6GeAGb0',
     title:
       "What's normal anxiety -- and what's an anxiety disorder? | Body Stuff with Dr. Jen Gunter",
     description:
@@ -363,7 +363,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'WWloIAQpMcQ',
+    _id: 'WWloIAQpMcQ',
     title: 'How to cope with anxiety | Olivia Remes | TEDxUHasselt',
     description: 'Wo5dMEP_BbI',
     creator: 'TEDx Talks',
@@ -373,7 +373,7 @@ export const videos = [
     likes: '14K',
   },
   {
-    id: 'Fa3mQnJv_z0',
+    _id: 'Fa3mQnJv_z0',
     title: 'If You Struggle with Anxiety, These Tricks Could Save Your Life',
     description:
       'There was a time in my life when I was completely debilitated by anxiety. Fortunately, I have put in a lot of work over the years and studied to understand neurochemically what was happening to me when anxiety would step in to ruin the day. In this Q & A, I am answering 6 common questions about anxiety and laying out the exact process I use and the logic you’ll need to start mastering your own anxiety with time and effort. I remember how hopeless I felt and I now know how simple and effective some of these tips are to put into practice. Action cures all and the sooner you implement these tips the sooner you can start to feel superhuman and reach your true potential.',
@@ -384,7 +384,7 @@ export const videos = [
     likes: '12K',
   },
   {
-    id: 'BVJkf8IuRjE',
+    _id: 'BVJkf8IuRjE',
     title: 'What is Anxiety?',
     description:
       'What is #anxiety? Although anxiety is a common reaction, learn about the symptoms and types of anxiety and how it can become a problem and when diagnosed as a disorder.',
@@ -395,7 +395,7 @@ export const videos = [
     likes: '16K',
   },
   {
-    id: 'uLCsX_aVZRg',
+    _id: 'uLCsX_aVZRg',
     title: 'How to Enhance Your Focus | Sadhguru',
     description:
       'Sadhguru differentiates between focus and attention, and how the key to success is to heighten attention and make the mind like a mirror that sees everything as it is.',
@@ -406,7 +406,7 @@ export const videos = [
     likes: '13K',
   },
   {
-    id: 'Hu4Yvq-g7_Y',
+    _id: 'Hu4Yvq-g7_Y',
     title: 'How to Get Your Brain to Focus | Chris Bailey | TEDxManchester',
     description:
       'The latest research is clear: the state of our attention determines the state of our lives. So how do we harness our attention to focus deeper, get distracted less, and even become more creative? Chris Bailey, author of the recent book Hyperfocus, talks about how our ability to focus is the key to productivity, creativity, and living a meaningful life.',
@@ -417,7 +417,7 @@ export const videos = [
     likes: '20K',
   },
   {
-    id: '8ZhoeSaPF-k',
+    _id: '8ZhoeSaPF-k',
     title: 'How To Stay Motivated - The Locus Rule',
     description:
       "A lot of people ask me questions about how to stay/be/get motivated. Today I'll tell you about a very interesting study on motivation that will you you a lot of insight on what you actually have to do to pull this off. This is what I like to call The Locus Rule.",
@@ -428,7 +428,7 @@ export const videos = [
     likes: '19K',
   },
   {
-    id: 'La9oLLoI5Rc',
+    _id: 'La9oLLoI5Rc',
     title:
       'How To BRAINWASH Yourself For Success & Destroy NEGATIVE THOUGHTS! | Dr. Joe Dispenza',
     description:
@@ -440,7 +440,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: 'njDLNt-1ugM',
+    _id: 'njDLNt-1ugM',
     title: 'Marcus Aurelius – How To Build Self Discipline (Stoicism)',
     description:
       'In this video we will be talking about 10 important insights for building your Self Discipline from the writings of Marcus Aurelius. He was also a devout student of the philosophy of Stoicism. During his rule, Aurelius found the time to construct a series of autobiographical writings, now known as the Meditations. In these writings, the Marcus Aurelius offered a number of key insights on how to build self discipline.',
@@ -451,7 +451,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: 'FSZyzhi8C9o',
+    _id: 'FSZyzhi8C9o',
     title: 'The Science of Habits | Marco Badwal | TEDxFS',
     description:
       'Marco is currently a full-time research scholar at Harvard University. The aim of the research is to help us to better understand learning and memory. Marco talks about the building and implementation of habits and their benefit to "get a bit better every day".   Marco is an upcoming cognitive neuroscientist from the University of Amsterdam (UvA), health consultant and enthusiastic Crossfitter. The impulse to better understand the human psyche and brain came first through his parents, who are both psychologists, and was later sparked by inspiring authors and researchers, such as Sam Harris.',
@@ -462,7 +462,7 @@ export const videos = [
     likes: '12K',
   },
   {
-    id: 'PZ7lDrwYdZc',
+    _id: 'PZ7lDrwYdZc',
     title:
       'How to become 37.78 times better at anything | Atomic Habits summary (by James Clear)',
     description:
@@ -474,7 +474,7 @@ export const videos = [
     likes: '17K',
   },
   {
-    id: 'U0gvKt7TKic',
+    _id: 'U0gvKt7TKic',
     title:
       '10 Productivity tips and tricks that work | Ankur Warikoo Hindi Video | How to be more productive',
     description:
@@ -486,7 +486,7 @@ export const videos = [
     likes: '15K',
   },
   {
-    id: '302KbxxJDbE',
+    _id: '302KbxxJDbE',
     title: 'Confucius | The Art of Becoming Better (Self-Cultivation)',
     description:
       'Isn’t it the case we should always stay true to ourselves? Which means that we ought to know who we are, and organize our lives in ways that are compatible with our personalities?\n    When we look for a partner, for example, we look for someone that we’re compatible with, and in regards to education and work, we need to do something that fits our characteristics.\n    However, "not knowing who we are" seems to be a problem. But luckily, this problem can be solved by taking a personality test, by talking to a counselor, or perhaps by going on a long solo-trip around the world to (quote on quote) “find ourselves”. Because, after all, our true selves lie somewhere hidden deep within.\n    Right?\n    Well, according to Michael Puett, Harvard professor of Chinese History and author of the book The Path, this way of thinking is extremely limited and even dangerous when it comes to how we live our lives.',
@@ -497,7 +497,7 @@ export const videos = [
     likes: '17K',
   },
   {
-    id: 'ZK4JHLzRg2Q',
+    _id: 'ZK4JHLzRg2Q',
     title: 'Buddha - Conquer Fear, Become Free',
     description:
       'In The Dhammapada, the Buddha says that a wise person is beyond fear and, as a result, is truly free, and I explored this idea more deeply through a dialogue. I was interested in the complete elimination of fear from the mind, and here’s where I’ve arrived.\n    Fear is a barrier that prevents the mind from learning, and the source of fear is our desire to protect ourselves from pain. But we can’t protect ourselves from pain. Our protection lies in the hands of Fate. Fate trades by a contract, and it’s possible to learn this contract and lessen the amount of pain we receive in life. But to completely eliminate fear from the mind, two things have to be true: when Fate does give us pain, it’s necessary and bearable. And only when fear vanishes are we able to be free, uncontrolled by anyone. But as long as fear exists in the mind, there’s always a tyrant trying to control us.',
