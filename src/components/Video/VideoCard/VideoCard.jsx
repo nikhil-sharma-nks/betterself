@@ -2,26 +2,34 @@ import React, { useState, useEffect } from 'react';
 import './videoCard.scss';
 import { isVideosInLiked } from '../../../utils';
 import { useVideo, useAuth } from '../../../context';
-import { makeToast } from '../../';
+import { makeToast, PlaylistModal, Spinner } from '../../';
 import { useNavigate } from 'react-router-dom';
 import {
-  getUserLikedVideos,
   addToLikedVideos,
   deleteFromLikedVideos,
+  deleteVideoFromPlaylist,
 } from '../../../api';
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, fromPlaylist, playlistId }) => {
   const navigate = useNavigate();
-  const { _id, title, description, creator, category, uploadDate, views } =
-    video;
+  const { _id, title, creator, uploadDate, views } = video;
   const { videoState, videoDispatch } = useVideo();
-  const { authState, authDispatch } = useAuth();
+  const { authState } = useAuth();
   const [menuModal, setMenuModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const toggleMenuModal = () => setMenuModal((menu) => !menu);
   const [isLiked, setIsLiked] = useState(false);
+  const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
+
   useEffect(() => {
     setIsLiked(isVideosInLiked(_id, videoState?.likes));
   }, [videoState]);
+
+  const handlePlaylistClick = () => {
+    setIsPlaylistModalOpen(true);
+  };
+
   const handleLiked = async () => {
     if (!authState.isAuth) {
       makeToast('Please Login First To Add To Wishlist', 'error');
@@ -57,47 +65,98 @@ const VideoCard = ({ video }) => {
     }
   };
 
+  const removeVideoFromPlaylist = async (playlistId, videoId) => {
+    try {
+      setLoading(true);
+      const data = await deleteVideoFromPlaylist(playlistId, videoId);
+      if (data) {
+        videoDispatch({
+          type: 'ADD_TO_PLAYLISTS',
+          payload: videoState.playlists.map((playlist) =>
+            playlist._id === data._id ? data : playlist
+          ),
+        });
+        makeToast(
+          `${video.title} Video Remved from ${data.title} Playlist `,
+          'success'
+        );
+        setMenuModal(false);
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    } catch (err) {
+      setLoading(false);
+      console.log(err.message);
+    }
+  };
+
   return (
-    <div className='video-card pos-rel'>
-      <div className='thmubnail'>
-        <img
-          src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
-          className='thumbnail-img'
-          alt={title}
+    <>
+      {isPlaylistModalOpen && (
+        <PlaylistModal
+          setIsPlaylistModalOpen={setIsPlaylistModalOpen}
+          video={video}
         />
-        <i
-          className={
-            isLiked
-              ? 'fas fa-heart wishlist wishlist-selected'
-              : 'fas fa-heart wishlist'
-          }
-          onClick={handleLiked}
-        ></i>
-      </div>
-      <div className='info-container'>
-        <div className='video-title-menu'>
-          <div className='video-title'>{title}</div>
-          <div className='video-menu'>
+      )}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className='video-card pos-rel'>
+          <div className='thmubnail'>
+            <img
+              src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
+              className='thumbnail-img'
+              alt={title}
+            />
             <i
-              className='fa-solid fa-ellipsis-vertical'
-              onClick={toggleMenuModal}
+              className={
+                isLiked
+                  ? 'fas fa-heart wishlist wishlist-selected'
+                  : 'fas fa-heart wishlist'
+              }
+              onClick={handleLiked}
             ></i>
-            {menuModal && (
-              <div className='menu-modal'>
-                <div className='menu-option'>Add To Playlist</div>
-                <div className='menu-option'>Add To Watch Later</div>
-                <div className='menu-option'>Remove From Watch Later</div>
+          </div>
+          <div className='info-container'>
+            <div className='video-title-menu'>
+              <div className='video-title'>{title}</div>
+              <div className='video-menu'>
+                <i
+                  className='fa-solid fa-ellipsis-vertical'
+                  onClick={toggleMenuModal}
+                ></i>
+                {menuModal && (
+                  <div className='menu-modal'>
+                    {fromPlaylist ? (
+                      <div
+                        className='menu-option cancel-option'
+                        onClick={() => removeVideoFromPlaylist(playlistId, _id)}
+                      >
+                        Remove From Playlist
+                      </div>
+                    ) : (
+                      <div
+                        className='menu-option'
+                        onClick={handlePlaylistClick}
+                      >
+                        Add To Playlist
+                      </div>
+                    )}
+                    <div className='menu-option'>Add To Watch Later</div>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
+            <div className='creator mt-2'>{creator}</div>
+            <div className='video-details mt-2'>
+              <div className='views-count'>{views} views</div>
+              <div className='upload-date'>{uploadDate}</div>
+            </div>
           </div>
         </div>
-        <div className='creator mt-2'>{creator}</div>
-        <div className='video-details mt-2'>
-          <div className='views-count'>{views} views</div>
-          <div className='upload-date'>{uploadDate}</div>
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
