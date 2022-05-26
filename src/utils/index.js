@@ -3,4 +3,6 @@ export {
   getvideosBySort,
   searchVideos,
   isVideosInLiked,
+  isVideoInPlaylist,
+  totalVideosInPlaylists,
 } from './videoUtil';
