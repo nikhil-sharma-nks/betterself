@@ -40,11 +40,11 @@ const Login = () => {
         videoDispatch({ type: 'ADD_TO_LIKED', payload: authData.user.likes });
         videoDispatch({
           type: 'ADD_TO_PLAYLISTS',
-          payload: authData.user.watchlater,
+          payload: authData.user.playlists,
         });
         videoDispatch({
           type: 'ADD_TO_WATCH_LATER',
-          payload: authData.user.playlists,
+          payload: authData.user.watchlater,
         });
         videoDispatch({
           type: 'ADD_TO_HISTORY',

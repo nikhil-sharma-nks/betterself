@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './home.scss';
-import { getAllProducts, getAllCategories } from '../../api';
+import { getAllVideos, getAllCategories } from '../../api';
 import { useVideo, useTheme } from '../../context';
 import Select from 'react-select';
 import { VideoContainer, Spinner, Sidebar } from '../../components';
@@ -24,7 +24,7 @@ const Home = () => {
     (async () => {
       try {
         setLoading(true);
-        const videos = await getAllProducts();
+        const videos = await getAllVideos();
         videoDispatch({
           type: 'LOAD_VIDEOS',
           payload: videos,

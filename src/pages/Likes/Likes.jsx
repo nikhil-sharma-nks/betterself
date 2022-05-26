@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './likes.scss';
 import { Sidebar, VideoCard } from '../../components';
-import { useAuth, useVideo } from '../../context';
+import { useVideo } from '../../context';
 
 const Likes = () => {
   const { videoState } = useVideo();
@@ -22,7 +22,7 @@ const Likes = () => {
           )}
           <div className='video-container'>
             {videoState.likes.map((video) => (
-              <VideoCard video={video} />
+              <VideoCard video={video} key={video._id} />
             ))}
           </div>
         </div>
