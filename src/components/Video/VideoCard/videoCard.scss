@@ -65,6 +65,9 @@
             padding: 10px;
             cursor: pointer;
           }
+          .cancel-option {
+            color: var(--error);
+          }
           .menu-option:hover {
             background-color: var(--category-pills-background-color);
           }
