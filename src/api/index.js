@@ -1,8 +1,15 @@
+export { loginUser, signupUser } from './authService';
+export { getAllVideos, getAllCategories } from './videoService/video';
 export {
-  getAllProducts,
-  getAllCategories,
   getUserLikedVideos,
   addToLikedVideos,
   deleteFromLikedVideos,
-} from './videoService';
-export { loginUser, signupUser } from './authService';
+} from './videoService/like';
+export {
+  getAllPlaylist,
+  createPlaylist,
+  deletePlaylist,
+  getVideosInPlaylist,
+  addVideoInPlaylist,
+  deleteVideoFromPlaylist,
+} from './videoService/playlist';
