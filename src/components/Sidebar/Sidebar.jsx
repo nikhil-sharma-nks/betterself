@@ -11,7 +11,7 @@ const Sidebar = () => {
     },
     {
       name: 'Playlist',
-      link: '/playlist',
+      link: '/playlists',
       icon: <i className='fa-solid fa-play mr-3'></i>,
     },
     {
