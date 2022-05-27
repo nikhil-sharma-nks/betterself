@@ -5,4 +5,5 @@ export {
   isVideosInLiked,
   isVideoInPlaylist,
   totalVideosInPlaylists,
+  findVideoInWatchlater,
 } from './videoUtil';

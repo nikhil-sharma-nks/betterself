@@ -48,6 +48,11 @@ const totalVideosInPlaylists = (playlists) => {
   );
   return total;
 };
+
+const findVideoInWatchlater = (watchlater, videoId) => {
+  const searched = watchlater.find((video) => video._id === videoId);
+  return searched ? true : false;
+};
 export {
   getVideosByFilter,
   getvideosBySort,
@@ -55,4 +60,5 @@ export {
   isVideosInLiked,
   isVideoInPlaylist,
   totalVideosInPlaylists,
+  findVideoInWatchlater
 };
