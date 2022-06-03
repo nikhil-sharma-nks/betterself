@@ -8,6 +8,7 @@ import {
   Playlist,
   SinglePlaylist,
   Watchlater,
+  SingleVideo,
 } from '../pages';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 
@@ -21,6 +22,7 @@ const RoutesContainer = () => {
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route path='/mock' element={<Mockman />} />
+      <Route path='/video/:videoId' element={<SingleVideo />} />
       <Route path='/' element={<AuthenticatedRoutes />}>
         <Route path='/likes' element={<Likes />} />
         <Route path='/playlists' element={<Playlist />} />
