@@ -135,6 +135,8 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
     }
   };
 
+  const handleCardClick = () => navigate(`/video/${_id}`);
+
   return (
     <>
       {isPlaylistModalOpen && (
@@ -147,11 +149,12 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
         <Spinner />
       ) : (
         <div className='video-card pos-rel'>
-          <div className='thmubnail'>
+          <div className='thumbnail'>
             <img
               src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
               className='thumbnail-img'
               alt={title}
+              onClick={handleCardClick}
             />
             <i
               className={
