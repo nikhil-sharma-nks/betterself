@@ -18,3 +18,8 @@ export {
   addVideoToWatchlater,
   deleteVideoFromWatchlater,
 } from './videoService/watchlater';
+export {
+  getUserHistory,
+  addToHistory,
+  deleteFromHistory,
+} from './videoService/history';
