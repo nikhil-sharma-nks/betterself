@@ -11,6 +11,7 @@ import {
   deleteFromLikedVideos,
   addVideoToWatchlater,
   deleteVideoFromWatchlater,
+  addToHistory,
 } from '../../api';
 
 const SingleVideo = () => {
@@ -39,6 +40,13 @@ const SingleVideo = () => {
         foundVideo ? setIsFound(true) : setIsFound(false);
         if (foundVideo) {
           setVideo(foundVideo);
+          const history = await addToHistory(foundVideo);
+          if (history) {
+            videoDispatch({
+              type: 'ADD_TO_HISTORY',
+              payload: history,
+            });
+          }
         }
         setLoading(false);
       } catch (err) {
