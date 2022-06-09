@@ -1,0 +1,33 @@
+.sidebar {
+  padding-top: 1rem;
+  grid-column: var(--grid-child-1);
+  width: 100%;
+  height: calc(100vh - 4rem);
+  position: sticky;
+  top: 4rem;
+  background-color: var(--background-color);
+  transition: var(--default-transition);
+
+  .sidebar-link-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .link-item {
+      display: flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: var(--text-color);
+      font-size: larger;
+      font-weight: var(--font-light);
+      transition: var(--default-transition);
+    }
+    :hover {
+      cursor: pointer;
+      background-color: var(--background-color-secondary);
+    }
+    .link-isActive {
+      cursor: pointer;
+      background-color: var(--background-color-secondary);
+    }
+  }
+}

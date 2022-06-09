@@ -1,0 +1,91 @@
+.navigationbar-container {
+  position: sticky;
+  z-index: 5;
+  top: 0;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: var(--default-transition);
+  box-shadow: 12px 12px 12px 2px var(--background-color);
+  .navbar {
+    .navbar-header {
+      .app-logo {
+        height: 2.5rem;
+      }
+    }
+    .product-link {
+      margin-left: 2rem;
+      letter-spacing: 0.2rem;
+      font-weight: bold;
+      font-size: larger;
+    }
+    .product-link:hover {
+      color: var(--primary-color);
+    }
+    .navbar-search {
+      display: flex;
+      align-items: center;
+      color: var(--text-color);
+      background-color: var(--search-box-backgroun);
+      border: 1px solid var(--text-color);
+
+      input {
+        border: none;
+        background-color: var(--search-box-backgroun);
+        color: var(--text-color);
+      }
+      i {
+        padding: 10px 10px;
+        color: var(--text-color);
+      }
+      .search-cancel {
+        cursor: pointer;
+      }
+      .search-cancel:hover {
+        color: var(--error);
+      }
+      .search-btn {
+        cursor: pointer;
+        border-bottom: 1px solid var(--primary-color);
+      }
+    }
+    .navigation-buttons {
+      gap: 1rem;
+      .theme-container {
+        cursor: pointer;
+      }
+      .avatar-circular {
+        height: 2rem;
+        width: 2rem;
+        font-size: 1rem;
+      }
+      .dropdown {
+        display: inline-block;
+        position: relative;
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          left: -1rem;
+          width: 5rem;
+          overflow: auto;
+          box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+          color: var(--black);
+          div {
+            padding: 5px;
+            left: -2rem;
+            background-color: var(--white);
+            cursor: pointer;
+          }
+          div:hover {
+            background-color: var(--bg-grey);
+          }
+        }
+      }
+      .dropdown:hover {
+        .dropdown-content {
+          display: block;
+          z-index: 5;
+        }
+      }
+    }
+  }
+}
