@@ -13,3 +13,13 @@ export {
   addVideoInPlaylist,
   deleteVideoFromPlaylist,
 } from './videoService/playlist';
+export {
+  getAllWatchlater,
+  addVideoToWatchlater,
+  deleteVideoFromWatchlater,
+} from './videoService/watchlater';
+export {
+  getUserHistory,
+  addToHistory,
+  deleteFromHistory,
+} from './videoService/history';

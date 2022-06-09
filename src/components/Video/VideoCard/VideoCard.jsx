@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './videoCard.scss';
-import { isVideosInLiked } from '../../../utils';
+import { isVideosInLiked, findVideoInWatchlater } from '../../../utils';
 import { useVideo, useAuth } from '../../../context';
 import { makeToast, PlaylistModal, Spinner } from '../../';
 import { useNavigate } from 'react-router-dom';
@@ -8,9 +8,12 @@ import {
   addToLikedVideos,
   deleteFromLikedVideos,
   deleteVideoFromPlaylist,
+  addVideoToWatchlater,
+  deleteVideoFromWatchlater,
+  deleteFromHistory,
 } from '../../../api';
 
-const VideoCard = ({ video, fromPlaylist, playlistId }) => {
+const VideoCard = ({ video, fromPlaylist, playlistId, fromHistory }) => {
   const navigate = useNavigate();
   const { _id, title, creator, uploadDate, views } = video;
   const { videoState, videoDispatch } = useVideo();
@@ -21,9 +24,11 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
   const toggleMenuModal = () => setMenuModal((menu) => !menu);
   const [isLiked, setIsLiked] = useState(false);
   const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
+  const [isVideoInWatchlater, setIsVideoInWatchlater] = useState(false);
 
   useEffect(() => {
     setIsLiked(isVideosInLiked(_id, videoState?.likes));
+    setIsVideoInWatchlater(findVideoInWatchlater(videoState.watchlater, _id));
   }, [videoState]);
 
   const handlePlaylistClick = () => {
@@ -91,6 +96,72 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
     }
   };
 
+  const handleWatchlater = async () => {
+    if (!authState.isAuth) {
+      makeToast('Please Login First To Add To Watch later', 'error');
+      navigate('/login');
+      return;
+    }
+    if (isVideoInWatchlater) {
+      try {
+        setLoading(true);
+        const data = await deleteVideoFromWatchlater(_id);
+        if (data) {
+          videoDispatch({
+            type: 'ADD_TO_WATCH_LATER',
+            payload: data,
+          });
+          makeToast(`${title} Removed From Watch Later`, 'success');
+        }
+        toggleMenuModal();
+        setLoading(false);
+      } catch (error) {
+        makeToast('Failed To Removed From Watch Later', 'error');
+        console.log(error);
+        setLoading(false);
+      }
+    } else {
+      try {
+        setLoading(true);
+        const data = await addVideoToWatchlater(video);
+        if (data) {
+          videoDispatch({
+            type: 'ADD_TO_WATCH_LATER',
+            payload: data,
+          });
+          makeToast(`${title} Added to watch later`, 'success');
+        }
+        toggleMenuModal();
+        setLoading(false);
+      } catch (error) {
+        makeToast('Failed To Add To watch later', 'error');
+        console.log(error);
+        setLoading(false);
+      }
+    }
+  };
+
+  const handleHistory = async () => {
+    try {
+      setLoading(true);
+      const history = await deleteFromHistory(_id);
+      if (history) {
+        videoDispatch({
+          type: 'ADD_TO_HISTORY',
+          payload: history,
+        });
+        makeToast(`${title} Removed From History`, 'success');
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      console.log(err.message);
+    }
+  };
+
+  const handleCardClick = () => navigate(`/video/${_id}`);
+
   return (
     <>
       {isPlaylistModalOpen && (
@@ -103,11 +174,12 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
         <Spinner />
       ) : (
         <div className='video-card pos-rel'>
-          <div className='thmubnail'>
+          <div className='thumbnail'>
             <img
               src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
               className='thumbnail-img'
               alt={title}
+              onClick={handleCardClick}
             />
             <i
               className={
@@ -143,7 +215,26 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
                         Add To Playlist
                       </div>
                     )}
-                    <div className='menu-option'>Add To Watch Later</div>
+                    {isVideoInWatchlater ? (
+                      <div
+                        className='menu-option cancel-option'
+                        onClick={handleWatchlater}
+                      >
+                        Remove From Watch Later
+                      </div>
+                    ) : (
+                      <div onClick={handleWatchlater} className='menu-option'>
+                        Add To Watch Later
+                      </div>
+                    )}
+                    {fromHistory && (
+                      <div
+                        onClick={handleHistory}
+                        className='menu-option cancel-option'
+                      >
+                        Remove From History
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
