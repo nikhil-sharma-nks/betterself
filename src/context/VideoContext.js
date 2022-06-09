@@ -7,10 +7,10 @@ const useVideo = () => useContext(VideoContext);
 
 const InitialVideoState = {
   categories: [],
-  likedVideos: [],
+  likes: [],
   history: [],
   videos: [],
-  watchLater: [],
+  watchlater: [],
   playlists: [],
   sortBy: '',
   searchQuery: '',

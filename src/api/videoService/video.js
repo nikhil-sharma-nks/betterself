@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const getAllProducts = async () => {
-  const getAllProductsBaseUrl = '/api/videos';
+const getAllVideos = async () => {
+  const getAllVideosBaseUrl = '/api/videos';
   try {
     const {
       data: { videos },
       status,
-    } = await axios.get(getAllProductsBaseUrl);
+    } = await axios.get(getAllVideosBaseUrl);
     if (status >= 200 && status <= 300) return videos;
     else {
       throw new Error("Couldn't get videos");
@@ -32,4 +32,4 @@ const getAllCategories = async () => {
   }
 };
 
-export { getAllProducts, getAllCategories };
+export { getAllVideos, getAllCategories };

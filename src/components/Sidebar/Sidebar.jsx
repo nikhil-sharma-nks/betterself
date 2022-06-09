@@ -11,12 +11,12 @@ const Sidebar = () => {
     },
     {
       name: 'Playlist',
-      link: '/playlist',
+      link: '/playlists',
       icon: <i className='fa-solid fa-play mr-3'></i>,
     },
     {
       name: 'Liked',
-      link: '/liked-videos',
+      link: '/likes',
       icon: <i className='fa-solid fa-thumbs-up mr-3'></i>,
     },
     {

@@ -31,6 +31,42 @@ const VideoReducer = (state, action) => {
         searchQuery: payload,
       };
     }
+    case 'ADD_TO_LIKED': {
+      return {
+        ...state,
+        likes: payload,
+      };
+    }
+    case 'ADD_TO_WATCH_LATER': {
+      return {
+        ...state,
+        watchlater: payload,
+      };
+    }
+    case 'ADD_TO_PLAYLISTS': {
+      return {
+        ...state,
+        playlists: payload,
+      };
+    }
+    case 'ADD_TO_HISTORY': {
+      return {
+        ...state,
+        history: payload,
+      };
+    }
+    case 'LOGOUT': {
+      return {
+        ...state,
+        likes: [],
+        history: [],
+        watchlater: [],
+        playlists: [],
+        sortBy: '',
+        searchQuery: '',
+        categorizedBy: 'all',
+      };
+    }
     default:
       return state;
   }
