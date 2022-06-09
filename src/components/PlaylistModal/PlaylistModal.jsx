@@ -35,6 +35,10 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
       makeToast('Please Login First To Create A Playlist', 'info');
       navigate('/login');
     }
+    if (playListName === '') {
+      makeToast('Please Add A Name To Platlist', 'info');
+      return;
+    }
     try {
       setLoading(true);
       const data = await createPlaylist(playListName);

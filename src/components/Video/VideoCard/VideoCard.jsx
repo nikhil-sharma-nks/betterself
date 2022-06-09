@@ -10,9 +10,10 @@ import {
   deleteVideoFromPlaylist,
   addVideoToWatchlater,
   deleteVideoFromWatchlater,
+  deleteFromHistory,
 } from '../../../api';
 
-const VideoCard = ({ video, fromPlaylist, playlistId }) => {
+const VideoCard = ({ video, fromPlaylist, playlistId, fromHistory }) => {
   const navigate = useNavigate();
   const { _id, title, creator, uploadDate, views } = video;
   const { videoState, videoDispatch } = useVideo();
@@ -96,6 +97,11 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
   };
 
   const handleWatchlater = async () => {
+    if (!authState.isAuth) {
+      makeToast('Please Login First To Add To Watch later', 'error');
+      navigate('/login');
+      return;
+    }
     if (isVideoInWatchlater) {
       try {
         setLoading(true);
@@ -132,6 +138,25 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
         console.log(error);
         setLoading(false);
       }
+    }
+  };
+
+  const handleHistory = async () => {
+    try {
+      setLoading(true);
+      const history = await deleteFromHistory(_id);
+      if (history) {
+        videoDispatch({
+          type: 'ADD_TO_HISTORY',
+          payload: history,
+        });
+        makeToast(`${title} Removed From History`, 'success');
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      console.log(err.message);
     }
   };
 
@@ -200,6 +225,14 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
                     ) : (
                       <div onClick={handleWatchlater} className='menu-option'>
                         Add To Watch Later
+                      </div>
+                    )}
+                    {fromHistory && (
+                      <div
+                        onClick={handleHistory}
+                        className='menu-option cancel-option'
+                      >
+                        Remove From History
                       </div>
                     )}
                   </div>
