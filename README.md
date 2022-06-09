@@ -1,6 +1,6 @@
-## BetterMe
+## BetterSelf
 
-BetterMe is a self-help video library. Life is stale if there is no growth. To add more growth to you and your life Betterme has self help and mental health related content. 
+BetterSelf is a self-help video library. Life is stale if there is no growth. To add more growth to you and your life BetterSelf has self help and mental health related content. 
 
 ## Tech Stack
 1. Frontend - React (useContext, useReducer, useEffect, useState)
