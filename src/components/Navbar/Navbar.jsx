@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useVideo, useTheme } from '../../context';
 import './navbar.scss';
 import { useAuth } from '../../context';
 import { makeToast } from '../../components';
+import LOGO from '../../assets/logo.png';
 
 const Navbar = () => {
-  const location = useLocation();
   const navigate = useNavigate();
   const { videoState, videoDispatch } = useVideo();
   const { theme, toggleTheme } = useTheme();
@@ -36,6 +36,7 @@ const Navbar = () => {
       <div className='navbar'>
         <Link to='/'>
           <div className='navbar-header'>
+            <img src={LOGO} alt='' className='app-logo mr-2' />
             <div className='h2'>BetterSelf</div>
           </div>
         </Link>
