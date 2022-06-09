@@ -36,4 +36,29 @@ const isVideosInLiked = (id, videos) => {
   const foundInLiked = videos?.find((video) => video._id === id);
   return foundInLiked ? true : false;
 };
-export { getVideosByFilter, getvideosBySort, searchVideos, isVideosInLiked };
+
+const isVideoInPlaylist = (playlist, videoId) => {
+  const searched = playlist.videos.find((video) => video._id === videoId);
+  return searched ? true : false;
+};
+const totalVideosInPlaylists = (playlists) => {
+  const total = playlists.reduce(
+    (prev, current) => prev + current.videos.length,
+    0
+  );
+  return total;
+};
+
+const findVideoInWatchlater = (watchlater, videoId) => {
+  const searched = watchlater.find((video) => video._id === videoId);
+  return searched ? true : false;
+};
+export {
+  getVideosByFilter,
+  getvideosBySort,
+  searchVideos,
+  isVideosInLiked,
+  isVideoInPlaylist,
+  totalVideosInPlaylists,
+  findVideoInWatchlater
+};
