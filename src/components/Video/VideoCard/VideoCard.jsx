@@ -10,9 +10,10 @@ import {
   deleteVideoFromPlaylist,
   addVideoToWatchlater,
   deleteVideoFromWatchlater,
+  deleteFromHistory,
 } from '../../../api';
 
-const VideoCard = ({ video, fromPlaylist, playlistId }) => {
+const VideoCard = ({ video, fromPlaylist, playlistId, fromHistory }) => {
   const navigate = useNavigate();
   const { _id, title, creator, uploadDate, views } = video;
   const { videoState, videoDispatch } = useVideo();
@@ -96,6 +97,11 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
   };
 
   const handleWatchlater = async () => {
+    if (!authState.isAuth) {
+      makeToast('Please Login First To Add To Watch later', 'error');
+      navigate('/login');
+      return;
+    }
     if (isVideoInWatchlater) {
       try {
         setLoading(true);
@@ -135,6 +141,27 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
     }
   };
 
+  const handleHistory = async () => {
+    try {
+      setLoading(true);
+      const history = await deleteFromHistory(_id);
+      if (history) {
+        videoDispatch({
+          type: 'ADD_TO_HISTORY',
+          payload: history,
+        });
+        makeToast(`${title} Removed From History`, 'success');
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      console.log(err.message);
+    }
+  };
+
+  const handleCardClick = () => navigate(`/video/${_id}`);
+
   return (
     <>
       {isPlaylistModalOpen && (
@@ -147,11 +174,12 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
         <Spinner />
       ) : (
         <div className='video-card pos-rel'>
-          <div className='thmubnail'>
+          <div className='thumbnail'>
             <img
               src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
               className='thumbnail-img'
               alt={title}
+              onClick={handleCardClick}
             />
             <i
               className={
@@ -197,6 +225,14 @@ const VideoCard = ({ video, fromPlaylist, playlistId }) => {
                     ) : (
                       <div onClick={handleWatchlater} className='menu-option'>
                         Add To Watch Later
+                      </div>
+                    )}
+                    {fromHistory && (
+                      <div
+                        onClick={handleHistory}
+                        className='menu-option cancel-option'
+                      >
+                        Remove From History
                       </div>
                     )}
                   </div>
