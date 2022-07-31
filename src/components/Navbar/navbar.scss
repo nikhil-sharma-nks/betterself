@@ -7,6 +7,9 @@
   transition: var(--default-transition);
   box-shadow: 12px 12px 12px 2px var(--background-color);
   .navbar {
+    .menu-hamburg {
+      display: none;
+    }
     .navbar-header {
       .app-logo {
         height: 2.5rem;
@@ -85,6 +88,60 @@
           display: block;
           z-index: 5;
         }
+      }
+    }
+  }
+}
+.menu-container {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .navigationbar-container {
+    height: fit-content;
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      .menu-hamburg {
+        display: block;
+      }
+      .navbar-search {
+        display: none;
+      }
+      .navbar-header {
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        .main-title {
+          font-size: 1.5rem;
+        }
+        .product-link {
+          margin-left: 0;
+        }
+      }
+      .navigation-buttons {
+        display: flex;
+        justify-content: center;
+        .menu-hamburg {
+          display: block;
+        }
+        .dropdown,
+        .login-btn {
+          display: none;
+        }
+      }
+    }
+    .visible {
+      display: block;
+    }
+    .menu-container {
+      transition: top 1s;
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.562);
+      width: 100vw;
+      .sidebar {
+        display: block;
+        width: 50%;
       }
     }
   }

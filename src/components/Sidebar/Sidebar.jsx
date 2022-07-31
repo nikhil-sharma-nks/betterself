@@ -1,8 +1,10 @@
 import React from 'react';
 import './sidebar.scss';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../context';
 
-const Sidebar = () => {
+const Sidebar = ({ handleLogout, toggleMenuClick }) => {
+  const { authState, authDispatch } = useAuth();
   const sidebarLinks = [
     {
       name: 'Home',
@@ -46,6 +48,37 @@ const Sidebar = () => {
             </NavLink>
           </li>
         ))}
+        <li className='show-in-mobile'>
+          {!authState.isAuth ? (
+            <NavLink
+              to='/login'
+              className={({ isActive }) =>
+                isActive ? 'link-item link-isActive' : 'link-item'
+              }
+            >
+              <i className='fa-solid fa-arrow-right-to-bracket mr-3'></i>
+              Login
+            </NavLink>
+          ) : (
+            <div
+              className='link-item'
+              onClick={() => {
+                handleLogout();
+                toggleMenuClick();
+              }}
+            >
+              <i className='fa-solid fa-arrow-right-to-bracket mr-3'></i>
+              Logout{' '}
+            </div>
+          )}
+
+          <li
+            className='link-item close-menu'
+            onClick={() => toggleMenuClick()}
+          >
+            <i className='fa-solid fa-circle-xmark mr-3'></i>Close
+          </li>
+        </li>
       </ul>
     </div>
   );

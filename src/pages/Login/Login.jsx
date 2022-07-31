@@ -75,10 +75,10 @@ const Login = () => {
   };
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className='auth-page'>
+      <div className='auth-page'>
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className='login-page-container-betterme'>
             <form
               className='form-group'
@@ -143,8 +143,8 @@ const Login = () => {
               </div>
             </form>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };
