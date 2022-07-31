@@ -29,5 +29,28 @@
       cursor: pointer;
       background-color: var(--background-color-secondary);
     }
+    .show-in-mobile {
+      display: none;
+    }
+  }
+}
+@media (max-width: 700px) {
+  .sidebar {
+    display: none;
+    .sidebar-link-container {
+      .link-item:hover {
+        background-color: inherit;
+      }
+      .show-in-mobile {
+        display: block;
+        .link-item:hover {
+          background-color: inherit;
+        }
+        .close-menu {
+          color: var(--error);
+          margin-top: auto;
+        }
+      }
+    }
   }
 }

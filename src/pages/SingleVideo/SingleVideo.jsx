@@ -214,7 +214,9 @@ const SingleVideo = () => {
                         className='playlist-btn option-btn'
                         onClick={handlePlaylistClick}
                       >
-                        <i class='fa-solid fa-square-plus mr-2'></i>Save
+                        <div>
+                          <i class='fa-solid fa-square-plus mr-2'></i>Save
+                        </div>
                       </div>
                     </div>
                   </div>

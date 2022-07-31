@@ -34,16 +34,6 @@ const Signup = () => {
       const data = await signupUser(signupInput);
       if (data) {
         makeToast('Signup successful, You can now log in!', 'success');
-        const { encodedToken, createdUser } = data;
-        const authData = {
-          token: encodedToken,
-          user: createdUser,
-          isAuth: true,
-        };
-        // console.log({ data });
-        // delete authData.user.password;
-        // delete authData.user.confirmPassword;
-        // authDispatch({ type: 'SIGNUP_USER', payload: authData });
         navigate('/login');
       } else {
         setLoading(false);

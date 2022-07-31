@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useVideo, useTheme } from '../../context';
 import './navbar.scss';
 import { useAuth } from '../../context';
-import { makeToast } from '../../components';
+import { makeToast, Sidebar } from '../../components';
 import LOGO from '../../assets/logo.png';
 
 const Navbar = () => {
@@ -20,20 +20,23 @@ const Navbar = () => {
     videoDispatch({ type: 'LOGOUT' });
     navigate('/');
   };
-  const handleFocus = () => {
-    // if (location.pathname === '/') {
-    //   navigate('/');
-    // }
-  };
+
   const handleChange = (e) => {
     videoDispatch({
       type: 'SEARCH_QUERY',
       payload: e.target.value,
     });
   };
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenuClick = () => setIsMenuOpen((prev) => !prev);
   return (
     <div className='navigationbar-container'>
       <div className='navbar'>
+        <i
+          className='fa-solid fa-bars menu-hamburg fa-2x mr-2'
+          onClick={toggleMenuClick}
+        ></i>
         <Link to='/'>
           <div className='navbar-header'>
             <img src={LOGO} alt='' className='app-logo mr-2' />
@@ -48,7 +51,6 @@ const Navbar = () => {
             placeholder='Search Products Here'
             value={searchQuery}
             onChange={handleChange}
-            onFocus={handleFocus}
           />
           <i
             className='fa-solid fa-xmark search-cancel'
@@ -81,10 +83,18 @@ const Navbar = () => {
             </div>
           ) : (
             <Link to='/login'>
-              <button className='btn btn-secondary-outlined'>Login</button>
+              <button className='btn btn-secondary-outlined login-btn'>
+                Login
+              </button>
             </Link>
           )}
         </div>
+      </div>
+      <div className={`menu-container ${isMenuOpen ? 'visible' : ''}`}>
+        <Sidebar
+          handleLogout={handleLogout}
+          toggleMenuClick={toggleMenuClick}
+        />
       </div>
     </div>
   );

@@ -57,3 +57,11 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .playlist-modal-backdrop {
+    .playlist-modal {
+      width: 90vw;
+    }
+  }
+}
