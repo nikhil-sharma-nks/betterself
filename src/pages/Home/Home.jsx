@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './home.scss';
 import { getAllVideos, getAllCategories } from '../../api';
-import { useVideo, useTheme } from '../../context';
+import { useVideo } from '../../context';
 import Select from 'react-select';
 import { VideoContainer, Spinner, Sidebar } from '../../components';
 
@@ -9,17 +9,7 @@ const Home = () => {
   const { videoState, videoDispatch } = useVideo();
   const [loading, setLoading] = useState(false);
 
-  const {
-    categories,
-    likedVideos,
-    history,
-    videos,
-    watchLater,
-    playlists,
-    sortBy,
-    searchQuery,
-    categorizedBy,
-  } = videoState;
+  const { categories, categorizedBy } = videoState;
   useEffect(() => {
     (async () => {
       try {

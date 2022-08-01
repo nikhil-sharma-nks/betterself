@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../context';
 
 const Sidebar = ({ handleLogout, toggleMenuClick }) => {
-  const { authState, authDispatch } = useAuth();
+  const { authState,  } = useAuth();
   const sidebarLinks = [
     {
       name: 'Home',

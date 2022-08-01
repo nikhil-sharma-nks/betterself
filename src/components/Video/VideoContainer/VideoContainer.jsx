@@ -11,17 +11,7 @@ import {
 const VideoContainer = () => {
   const { videoState } = useVideo();
   const [selectedVideos, setSelectedVideos] = useState([]);
-  const {
-    categories,
-    likedVideos,
-    history,
-    videos,
-    watchLater,
-    playlists,
-    sortBy,
-    searchQuery,
-    categorizedBy,
-  } = videoState;
+  const { videos, sortBy, searchQuery, categorizedBy } = videoState;
   useEffect(() => {
     const videosByFilter = getVideosByFilter(categorizedBy, videos);
     const videosBySort = getvideosBySort(sortBy, videosByFilter);

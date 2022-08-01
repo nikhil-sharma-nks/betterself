@@ -14,7 +14,7 @@ const getUserLikedVideos = async () => {
     });
     if (status >= 200 && status <= 300) return likes;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't get user liked videos");
     }
   } catch (error) {
     console.log(error.message);
@@ -41,7 +41,7 @@ const addToLikedVideos = async (video) => {
     );
     if (status >= 200 && status <= 300) return likes;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't add to liked videos");
     }
   } catch (error) {
     console.log(error.message);
@@ -62,7 +62,7 @@ const deleteFromLikedVideos = async (videoId) => {
     });
     if (status >= 200 && status <= 300) return likes;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't delete from liked videos");
     }
   } catch (error) {
     console.log(error.message);

@@ -14,7 +14,7 @@ const getUserHistory = async () => {
     });
     if (status >= 200 && status <= 300) return history;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't get history");
     }
   } catch (error) {
     console.log(error.message);
@@ -41,7 +41,7 @@ const addToHistory = async (video) => {
     );
     if (status >= 200 && status <= 300) return history;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't add to history");
     }
   } catch (error) {
     console.log(error.message);
@@ -63,7 +63,7 @@ const deleteFromHistory = async (videoId) => {
 
     if (status >= 200 && status <= 300) return history;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't delete from history");
     }
   } catch (error) {
     console.log(error.message);
