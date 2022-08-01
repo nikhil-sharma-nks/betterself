@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.scss';
 import { useAuth } from '../../context';
@@ -8,7 +8,7 @@ import { makeToast, Spinner } from '../../components';
 const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const [signupInput, setSignupInput] = useState({
     firstName: '',
     lastName: '',
@@ -16,6 +16,13 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+
+  useEffect(() => {
+    if (authState.isAuth) {
+      makeToast('You Are Already Logged In', 'success');
+      navigate('/');
+    }
+  }, [authState]);
   const inputChangeHandler = (event) => {
     const { name, value } = event.target;
     setSignupInput({
