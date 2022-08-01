@@ -53,3 +53,11 @@
   min-height: calc(100vh - 4rem);
   width: 100%;
 }
+.theme-background {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+.theme-body-background {
+  color: var(--text-color);
+  background-color: var(--body-background-color);
+}

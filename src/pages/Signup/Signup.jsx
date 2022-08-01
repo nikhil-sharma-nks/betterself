@@ -8,7 +8,7 @@ import { makeToast, Spinner } from '../../components';
 const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { authState, authDispatch } = useAuth();
+  const { authState } = useAuth();
   const [signupInput, setSignupInput] = useState({
     firstName: '',
     lastName: '',

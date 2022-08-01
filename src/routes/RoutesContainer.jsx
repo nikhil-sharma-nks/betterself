@@ -10,6 +10,7 @@ import {
   Watchlater,
   SingleVideo,
   History,
+  Profile,
 } from '../pages';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 
@@ -30,6 +31,7 @@ const RoutesContainer = () => {
         <Route path='/playlists' element={<Playlist />} />
         <Route path='/watch-later' element={<Watchlater />} />
         <Route path='/playlists/:playlistId' element={<SinglePlaylist />} />
+        <Route path='/profile' element={<Profile />} />
       </Route>
     </Routes>
   );
