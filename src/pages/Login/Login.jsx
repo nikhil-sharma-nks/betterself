@@ -16,8 +16,8 @@ const Login = () => {
     password: '',
   });
   const testCredentials = {
-    email: 'adarshbalika@gmail.com',
-    password: 'adarshbalika',
+    email: 'nikhil.harsh.sharma@gmail.com',
+    password: 'nikhil123',
   };
   useEffect(() => {
     if (authState.isAuth) {

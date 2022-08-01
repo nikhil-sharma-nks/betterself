@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useVideo, useTheme } from '../../context';
 import './navbar.scss';
 import { useAuth } from '../../context';
@@ -8,6 +8,8 @@ import LOGO from '../../assets/logo.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const { videoState, videoDispatch } = useVideo();
   const { theme, toggleTheme } = useTheme();
   const { authState, authDispatch } = useAuth();
@@ -43,25 +45,28 @@ const Navbar = () => {
             <div className='h2'>BetterSelf</div>
           </div>
         </Link>
-        <div className='navbar-search'>
-          <i className='fa-solid fa-magnifying-glass'></i>
-          <input
-            type='text'
-            className='form-control'
-            placeholder='Search Products Here'
-            value={searchQuery}
-            onChange={handleChange}
-          />
-          <i
-            className='fa-solid fa-xmark search-cancel'
-            onClick={() =>
-              videoDispatch({
-                type: 'SEARCH_QUERY',
-                payload: '',
-              })
-            }
-          ></i>
-        </div>
+        {['/home', '/'].includes(location.pathname) && (
+          <div className='navbar-search'>
+            <i className='fa-solid fa-magnifying-glass'></i>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='Search Videos Here'
+              value={searchQuery}
+              onChange={handleChange}
+            />
+            <i
+              className='fa-solid fa-xmark search-cancel'
+              onClick={() =>
+                videoDispatch({
+                  type: 'SEARCH_QUERY',
+                  payload: '',
+                })
+              }
+            ></i>
+          </div>
+        )}
+
         <div className='navigation-buttons'>
           <div className='theme-container' onClick={toggleTheme}>
             {theme === 'light' ? (

@@ -33,6 +33,9 @@ const VideoContainer = () => {
       {selectedVideos.map((video) => (
         <VideoCard video={video} key={video.id} />
       ))}
+      {selectedVideos.length === 0 && (
+        <p className='text-centered text-l mx-auto'>No videos found!</p>
+      )}
     </div>
   );
 };
