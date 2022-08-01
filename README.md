@@ -21,6 +21,8 @@ BetterSelf is a self-help video library. Life is stale if there is no growth. To
 8. Single Video Page
 9. Sort by Latest Videos
 10. Toggle Dark/Light Mode
+11. Profile Page
+12. Mobile Responsiveness
 
 ## Demo
 https://www.loom.com/share/cfe2edbe7d0d462eb73ccffef5922ce1
