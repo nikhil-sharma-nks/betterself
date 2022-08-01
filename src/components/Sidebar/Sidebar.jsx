@@ -60,16 +60,27 @@ const Sidebar = ({ handleLogout, toggleMenuClick }) => {
               Login
             </NavLink>
           ) : (
-            <div
-              className='link-item'
-              onClick={() => {
-                handleLogout();
-                toggleMenuClick();
-              }}
-            >
-              <i className='fa-solid fa-arrow-right-to-bracket mr-3'></i>
-              Logout{' '}
-            </div>
+            <>
+              <NavLink
+                to='/profile'
+                className={({ isActive }) =>
+                  isActive ? 'link-item link-isActive' : 'link-item'
+                }
+              >
+                <i className='fa-solid fa-arrow-right-to-bracket mr-3'></i>
+                Profile
+              </NavLink>
+              <div
+                className='link-item'
+                onClick={() => {
+                  handleLogout();
+                  toggleMenuClick();
+                }}
+              >
+                <i className='fa-solid fa-arrow-right-to-bracket mr-3'></i>
+                Logout{' '}
+              </div>
+            </>
           )}
 
           <li
