@@ -25,7 +25,7 @@ const Profile = () => {
         </div>
         <div className='user-info-item'>
           <p>Account Created At</p>
-          <p>{authState.user.createdAt.slice(0, 10)}</p>
+          <p>{authState?.user?.createdAt?.slice(0, 10)}</p>
         </div>
       </div>
     </div>
