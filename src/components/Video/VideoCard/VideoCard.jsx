@@ -37,7 +37,7 @@ const VideoCard = ({ video, fromPlaylist, playlistId, fromHistory }) => {
 
   const handleLiked = async () => {
     if (!authState.isAuth) {
-      makeToast('Please Login First To Add To Wishlist', 'error');
+      makeToast('Please Login First To Add To likes', 'error');
       navigate('/login');
       return;
     }

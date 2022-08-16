@@ -28,6 +28,10 @@ const Login = () => {
 
   const loginHandler = async (event, loginInput) => {
     event.preventDefault();
+    if (!loginInput.email && !loginInput.password) {
+      makeToast('Please Add Both Fields To Login', 'error');
+      return;
+    }
     setLoading(true);
     try {
       const data = await loginUser(loginInput);
@@ -102,6 +106,7 @@ const Login = () => {
                 placeholder='Enter your email'
                 onChange={handleChange}
                 value={loginInput.email}
+                required
               />
               <label htmlFor='login_password' className='form-label'>
                 Password
@@ -114,24 +119,9 @@ const Login = () => {
                 placeholder='Enter your password'
                 onChange={handleChange}
                 value={loginInput.password}
+                required
               />
 
-              <div className='form-options-container mt-4'>
-                {/* <div>
-                  <input
-                    type='checkbox'
-                    id='rememberMe'
-                    name='rememberMe'
-                    value='newsletter'
-                  />
-                  <label className='ml-1' htmlFor='rememberMe'>
-                    Remember Me
-                  </label>
-                </div> */}
-                <div>
-                  <div>Forget Password</div>
-                </div>
-              </div>
               <button className='btn btn-primary mt-3' type='submit'>
                 Login
               </button>
