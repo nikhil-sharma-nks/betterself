@@ -1,6 +1,12 @@
 import './singleVideo.scss';
 import React, { useState, useEffect } from 'react';
-import { Sidebar, Spinner, makeToast, PlaylistModal } from '../../components';
+import {
+  Sidebar,
+  Spinner,
+  makeToast,
+  PlaylistModal,
+  Error,
+} from '../../components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getAllVideos } from '../../api';
 import { isVideosInLiked, findVideoInWatchlater } from '../../utils';
@@ -172,6 +178,21 @@ const SingleVideo = () => {
             <Spinner />
           ) : (
             <div className='single-video-content-container'>
+              {!isFound && !loading && (
+                <Error>
+                  <p className='text-xl'>Video Not Found</p>
+                  <div>
+                    <button
+                      className='btn btn-primary'
+                      onClick={() => {
+                        navigate('/home');
+                      }}
+                    >
+                      Go To Home
+                    </button>
+                  </div>
+                </Error>
+              )}
               <div className='single-video-container'>
                 {video ? (
                   <iframe
@@ -241,9 +262,6 @@ const SingleVideo = () => {
                 </div>
               </div>
             </div>
-          )}
-          {!isFound && !loading && (
-            <p className='text-xxl text-centered'>Video Not Found</p>
           )}
         </div>
       </div>

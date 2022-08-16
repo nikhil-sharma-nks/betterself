@@ -11,6 +11,7 @@ import {
   SingleVideo,
   History,
   Profile,
+  ErrorPage,
 } from '../pages';
 import AuthenticatedRoutes from './AuthenticatedRoutes';
 
@@ -33,6 +34,7 @@ const RoutesContainer = () => {
         <Route path='/playlists/:playlistId' element={<SinglePlaylist />} />
         <Route path='/profile' element={<Profile />} />
       </Route>
+      <Route path='*' element={<ErrorPage />} />
     </Routes>
   );
 };

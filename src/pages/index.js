@@ -8,3 +8,4 @@ export { Watchlater } from './Watchlater/Watchlater';
 export { SingleVideo } from './SingleVideo/SingleVideo';
 export { History } from './History/History';
 export { Profile } from './Profile/Profile';
+export { ErrorPage } from './ErrorPage/ErrorPage';
