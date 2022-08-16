@@ -4,7 +4,6 @@
   min-height: 100vh;
 
   .login-page-container-betterme {
-    transition: var(--default-transition);
     margin: 0 auto;
     transform: translateY(4rem);
     width: fit-content;
@@ -13,7 +12,6 @@
     background-color: var(--background-color) !important;
     color: var(--text-color);
     form {
-      transition: var(--default-transition);
       background-color: var(--background-color);
       color: var(--text-color);
       input {

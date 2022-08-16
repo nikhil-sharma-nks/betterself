@@ -16,10 +16,6 @@ const Profile = () => {
           <p>{authState.user.lastName}</p>
         </div>
         <div className='user-info-item'>
-          <p>Phone</p>
-          <p>{authState.user.phoneNo}</p>
-        </div>
-        <div className='user-info-item'>
           <p>Email</p>
           <p>{authState.user.email}</p>
         </div>

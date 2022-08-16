@@ -81,7 +81,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className='auth-page'>
+      <div className='auth-page theme-background'>
         {loading ? (
           <Spinner />
         ) : (
@@ -117,7 +117,7 @@ const Login = () => {
               />
 
               <div className='form-options-container mt-4'>
-                <div>
+                {/* <div>
                   <input
                     type='checkbox'
                     id='rememberMe'
@@ -127,7 +127,7 @@ const Login = () => {
                   <label className='ml-1' htmlFor='rememberMe'>
                     Remember Me
                   </label>
-                </div>
+                </div> */}
                 <div>
                   <div>Forget Password</div>
                 </div>
