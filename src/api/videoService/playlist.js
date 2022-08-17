@@ -14,7 +14,7 @@ const getAllPlaylist = async () => {
     });
     if (status >= 200 && status <= 300) return playlists;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't get playlist");
     }
   } catch (error) {
     console.log(error.message);
@@ -44,7 +44,7 @@ const createPlaylist = async (title, description = '') => {
     );
     if (status >= 200 && status <= 300) return playlists;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't create playlist");
     }
   } catch (error) {
     console.log(error.message);
@@ -65,7 +65,7 @@ const deletePlaylist = async (playlistId) => {
     });
     if (status >= 200 && status <= 300) return playlists;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't delete playlist'");
     }
   } catch (error) {
     console.log(error.message);
@@ -88,7 +88,7 @@ const getVideosInPlaylist = async (playlistId) => {
     console.log({ playlist });
     if (status >= 200 && status <= 300) return playlist;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't get videos in this playlist");
     }
   } catch (error) {
     console.log(error.message);
@@ -115,7 +115,7 @@ const addVideoInPlaylist = async (playlistId, video) => {
     );
     if (status >= 200 && status <= 300) return playlist;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't add video in this playlist");
     }
   } catch (error) {
     console.log(error.message);
@@ -136,7 +136,7 @@ const deleteVideoFromPlaylist = async (playlistId, videoId) => {
     });
     if (status >= 200 && status <= 300) return playlist;
     else {
-      throw new Error("Couldn't get categories");
+      throw new Error("Couldn't delete videos in this playlist");
     }
   } catch (error) {
     console.log(error.message);

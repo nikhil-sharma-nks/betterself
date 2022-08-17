@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { loginUser } from '../../api';
@@ -9,19 +9,29 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
   const { videoDispatch } = useVideo();
   const [loginInput, setLoginInput] = useState({
     email: '',
     password: '',
   });
   const testCredentials = {
-    email: 'adarshbalika@gmail.com',
-    password: 'adarshbalika',
+    email: 'nikhil.harsh.sharma@gmail.com',
+    password: 'nikhil123',
   };
+  useEffect(() => {
+    if (authState.isAuth) {
+      makeToast('You Are Already Logged In', 'success');
+      navigate('/');
+    }
+  }, [authState]);
 
   const loginHandler = async (event, loginInput) => {
     event.preventDefault();
+    if (!loginInput.email && !loginInput.password) {
+      makeToast('Please Add Both Fields To Login', 'error');
+      return;
+    }
     setLoading(true);
     try {
       const data = await loginUser(loginInput);
@@ -75,10 +85,10 @@ const Login = () => {
   };
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className='auth-page'>
+      <div className='auth-page theme-background'>
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className='login-page-container-betterme'>
             <form
               className='form-group'
@@ -96,6 +106,7 @@ const Login = () => {
                 placeholder='Enter your email'
                 onChange={handleChange}
                 value={loginInput.email}
+                required
               />
               <label htmlFor='login_password' className='form-label'>
                 Password
@@ -108,24 +119,9 @@ const Login = () => {
                 placeholder='Enter your password'
                 onChange={handleChange}
                 value={loginInput.password}
+                required
               />
 
-              <div className='form-options-container mt-4'>
-                <div>
-                  <input
-                    type='checkbox'
-                    id='rememberMe'
-                    name='rememberMe'
-                    value='newsletter'
-                  />
-                  <label className='ml-1' htmlFor='rememberMe'>
-                    Remember Me
-                  </label>
-                </div>
-                <div>
-                  <div>Forget Password</div>
-                </div>
-              </div>
               <button className='btn btn-primary mt-3' type='submit'>
                 Login
               </button>
@@ -143,8 +139,8 @@ const Login = () => {
               </div>
             </form>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

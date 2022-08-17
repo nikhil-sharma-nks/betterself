@@ -65,7 +65,7 @@ const deleteVideoFromWatchlater = async (videoId) => {
     });
     if (status >= 200 && status <= 300) return watchlater;
     else {
-      throw new Error("Couldn't add to watchlater");
+      throw new Error("Couldn't delete from watchlater");
     }
   } catch (error) {
     console.log(error.message);

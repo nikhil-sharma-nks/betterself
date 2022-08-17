@@ -18,7 +18,6 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
 
   const { videoState, videoDispatch } = useVideo();
   const { authState } = useAuth();
-
   const [playlistCollection, setPlaylistCollection] = useState([]);
 
   useEffect(() => {
@@ -35,13 +34,20 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
       makeToast('Please Login First To Create A Playlist', 'info');
       navigate('/login');
     }
-    if (playListName === '') {
+    if (playListName.trim() === '') {
       makeToast('Please Add A Name To Platlist', 'info');
+      return;
+    }
+    const isPlaylistNameAlreadyExists = videoState.playlists.find(
+      (playlist) => playlist.title === playListName.trim()
+    );
+    if (isPlaylistNameAlreadyExists) {
+      makeToast('Playlist By This Name Already Exists', 'error');
       return;
     }
     try {
       setLoading(true);
-      const data = await createPlaylist(playListName);
+      const data = await createPlaylist(playListName.trim());
       if (data) {
         videoDispatch({
           type: 'ADD_TO_PLAYLISTS',
@@ -53,6 +59,8 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
           navigate('/playlists');
           setIsPlaylistModalOpen(false);
         }
+      } else {
+        showErrorMessage();
       }
 
       setLoading(false);
@@ -79,6 +87,7 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
         );
         setLoading(false);
       } else {
+        showErrorMessage();
         setLoading(false);
       }
     } catch (err) {
@@ -104,6 +113,7 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
         );
         setLoading(false);
       } else {
+        showErrorMessage();
         setLoading(false);
       }
     } catch (err) {
@@ -124,6 +134,13 @@ const PlaylistModal = ({ setIsPlaylistModalOpen, video, fromPlaylist }) => {
     } else {
       removeVideoFromPlaylist(_id, video._id);
     }
+  };
+
+  const showErrorMessage = () => {
+    makeToast(`Action Failed, See Log For It's Reason`, 'error');
+    console.log(
+      "This function was failed because, you might have refreshed the page somewhere, since this is a frontend application which doesn't have the real backend, it uses mock backend mockbee and mirajeJs which on reloading srves entire mock backend again instead of persisting. So you might want to logout, reload and log in again with test credentials or signup again and use the features of this app without reloading"
+    );
   };
 
   return (

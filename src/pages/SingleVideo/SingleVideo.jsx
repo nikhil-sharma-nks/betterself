@@ -1,6 +1,12 @@
 import './singleVideo.scss';
 import React, { useState, useEffect } from 'react';
-import { Sidebar, Spinner, makeToast, PlaylistModal } from '../../components';
+import {
+  Sidebar,
+  Spinner,
+  makeToast,
+  PlaylistModal,
+  Error,
+} from '../../components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getAllVideos } from '../../api';
 import { isVideosInLiked, findVideoInWatchlater } from '../../utils';
@@ -78,6 +84,8 @@ const SingleVideo = () => {
             payload: data,
           });
           makeToast(`${video.title} Added to Liked Videos`, 'success');
+        } else {
+          showErrorMessage();
         }
       } catch (error) {
         makeToast('Failed To Add To Liked Videos', 'error');
@@ -86,11 +94,15 @@ const SingleVideo = () => {
     } else {
       try {
         const data = await deleteFromLikedVideos(video._id);
-        videoDispatch({
-          type: 'ADD_TO_LIKED',
-          payload: data,
-        });
-        makeToast(`${video.title} Removed from Liked Videos`, 'success');
+        if (data) {
+          videoDispatch({
+            type: 'ADD_TO_LIKED',
+            payload: data,
+          });
+          makeToast(`${video.title} Removed from Liked Videos`, 'success');
+        } else {
+          showErrorMessage();
+        }
       } catch (error) {
         makeToast('Failed Removed from Liked Videos', 'error');
         console.log(error);
@@ -113,6 +125,8 @@ const SingleVideo = () => {
             payload: data,
           });
           makeToast(`${video.title} Removed From Watch Later`, 'success');
+        } else {
+          showErrorMessage();
         }
       } catch (error) {
         makeToast('Failed To Removed From Watch Later', 'error');
@@ -127,6 +141,8 @@ const SingleVideo = () => {
             payload: data,
           });
           makeToast(`${video.title} Added to watch later`, 'success');
+        } else {
+          showErrorMessage();
         }
       } catch (error) {
         makeToast('Failed To Add To watch later', 'error');
@@ -138,6 +154,13 @@ const SingleVideo = () => {
 
   const handlePlaylistClick = () => {
     setIsPlaylistModalOpen(true);
+  };
+
+  const showErrorMessage = () => {
+    makeToast(`Action Failed, See Log For It's Reason`, 'error');
+    console.log(
+      "This function was failed because, you might have refreshed the page somewhere, since this is a frontend application which doesn't have the real backend, it uses mock backend mockbee and mirajeJs which on reloading srves entire mock backend again instead of persisting. So you might want to logout, reload and log in again with test credentials or signup again and use the features of this app without reloading"
+    );
   };
 
   return (
@@ -155,6 +178,21 @@ const SingleVideo = () => {
             <Spinner />
           ) : (
             <div className='single-video-content-container'>
+              {!isFound && !loading && (
+                <Error>
+                  <p className='text-xl'>Video Not Found</p>
+                  <div>
+                    <button
+                      className='btn btn-primary'
+                      onClick={() => {
+                        navigate('/home');
+                      }}
+                    >
+                      Go To Home
+                    </button>
+                  </div>
+                </Error>
+              )}
               <div className='single-video-container'>
                 {video ? (
                   <iframe
@@ -214,7 +252,9 @@ const SingleVideo = () => {
                         className='playlist-btn option-btn'
                         onClick={handlePlaylistClick}
                       >
-                        <i class='fa-solid fa-square-plus mr-2'></i>Save
+                        <div>
+                          <i class='fa-solid fa-square-plus mr-2'></i>Save
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -222,9 +262,6 @@ const SingleVideo = () => {
                 </div>
               </div>
             </div>
-          )}
-          {!isFound && !loading && (
-            <p className='text-xxl text-centered'>Video Not Found</p>
           )}
         </div>
       </div>

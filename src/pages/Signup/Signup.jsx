@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.scss';
-import { useAuth } from '../../context';
-import { signupUser } from '../../api';
+import { useAuth, useVideo } from '../../context';
+import { signupUser, loginUser } from '../../api';
 import { makeToast, Spinner } from '../../components';
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { authDispatch } = useAuth();
+  const { authState, authDispatch } = useAuth();
+  const { videoDispatch } = useVideo();
   const [signupInput, setSignupInput] = useState({
     firstName: '',
     lastName: '',
@@ -16,6 +17,13 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+
+  useEffect(() => {
+    if (authState.isAuth) {
+      makeToast('You Are Already Logged In', 'success');
+      navigate('/');
+    }
+  }, [authState]);
   const inputChangeHandler = (event) => {
     const { name, value } = event.target;
     setSignupInput({
@@ -23,6 +31,48 @@ const Signup = () => {
       [name]: value,
     });
   };
+
+  const loginHandler = async (event, loginInput) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const data = await loginUser(loginInput);
+      if (data) {
+        makeToast('Login successful!', 'success');
+        const { encodedToken, foundUser } = data;
+        const authData = {
+          token: encodedToken,
+          user: foundUser,
+          isAuth: true,
+        };
+
+        delete authData.user.password;
+        delete authData.user.confirmPassword;
+        authDispatch({ type: 'LOGIN_USER', payload: authData });
+        videoDispatch({ type: 'ADD_TO_LIKED', payload: authData.user.likes });
+        videoDispatch({
+          type: 'ADD_TO_PLAYLISTS',
+          payload: authData.user.playlists,
+        });
+        videoDispatch({
+          type: 'ADD_TO_WATCH_LATER',
+          payload: authData.user.watchlater,
+        });
+        videoDispatch({
+          type: 'ADD_TO_HISTORY',
+          payload: authData.user.history,
+        });
+        navigate('/home');
+      } else {
+        setLoading(false);
+        makeToast('Login Failed, Try Again!', 'error');
+      }
+    } catch (error) {
+      makeToast('Login Failed, Try Again!', 'error');
+      setLoading(false);
+    }
+  };
+
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
     if (signupInput.password !== signupInput.confirmPassword) {
@@ -33,18 +83,11 @@ const Signup = () => {
     try {
       const data = await signupUser(signupInput);
       if (data) {
-        makeToast('Signup successful, You can now log in!', 'success');
-        const { encodedToken, createdUser } = data;
-        const authData = {
-          token: encodedToken,
-          user: createdUser,
-          isAuth: true,
-        };
-        // console.log({ data });
-        // delete authData.user.password;
-        // delete authData.user.confirmPassword;
-        // authDispatch({ type: 'SIGNUP_USER', payload: authData });
-        navigate('/login');
+        makeToast('Signup successful', 'success');
+        loginHandler(event, {
+          email: signupInput.email,
+          password: signupInput.password,
+        });
       } else {
         setLoading(false);
         makeToast('Signup Failed, Try Again!', 'error');
@@ -56,12 +99,57 @@ const Signup = () => {
     }
   };
 
+  const demoSignUp = [
+    {
+      firstName: 'Jon',
+      lastName: 'Doe',
+      email: 'jondoe@gmail.com',
+      password: '123123',
+      confirmPassword: '123123',
+    },
+    {
+      firstName: 'Virat',
+      lastName: 'Kholi',
+      email: 'viratKholi@gmail.com',
+      password: '123123',
+      confirmPassword: '123123',
+    },
+    {
+      firstName: 'MS',
+      lastName: 'Dhoni',
+      email: 'MSD@gmail.com',
+      password: '123123',
+      confirmPassword: '123123',
+    },
+    {
+      firstName: 'Kishore',
+      lastName: 'Kumar',
+      email: 'kishore_kumar@gmail.com',
+      password: '123123',
+      confirmPassword: '123123',
+    },
+    {
+      firstName: 'Mohd.',
+      lastName: 'Rafi',
+      email: 'mohd_rafi@gmail.com',
+      password: '123123',
+      confirmPassword: '123123',
+    },
+  ];
+
+  const fillDemoData = () => {
+    const randomDemoInput = Math.floor(Math.random() * demoSignUp.length);
+    setSignupInput({
+      ...demoSignUp[randomDemoInput],
+    });
+  };
+
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        <div className='auth-page'>
+      <div className='auth-page theme-background'>
+        {loading ? (
+          <Spinner />
+        ) : (
           <div className='signup-page-container'>
             <form
               className='form-group'
@@ -142,7 +230,7 @@ const Signup = () => {
                 ''
               )}
 
-              <div className='form-options-container mt-4'>
+              {/* <div className='form-options-container mt-4'>
                 <div>
                   <input
                     type='checkbox'
@@ -154,9 +242,16 @@ const Signup = () => {
                     I accept all terms and conditions
                   </label>
                 </div>
-              </div>
+              </div> */}
               <button className='btn btn-primary mt-3' type='submit'>
                 Sign Up
+              </button>
+              <button
+                className='btn btn-primary-outlined mt-3'
+                onClick={fillDemoData}
+                type='button'
+              >
+                Fill Demo Data
               </button>
               <div className='mt-3 text-centered'>
                 <Link to='/login' className='sign-up-link'>
@@ -165,8 +260,8 @@ const Signup = () => {
               </div>
             </form>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 };

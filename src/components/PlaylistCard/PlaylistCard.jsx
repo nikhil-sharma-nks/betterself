@@ -18,10 +18,19 @@ const PlaylistCard = ({ playlist }) => {
         });
         makeToast(`${playlist.title} Deleted`, 'success');
         navigate('/playlists');
+      } else {
+        showErrorMessage();
       }
     } catch (err) {
       console.log(err.message);
     }
+  };
+
+  const showErrorMessage = () => {
+    makeToast(`Action Failed, See Log For It's Reason`, 'error');
+    console.log(
+      "This function was failed because, you might have refreshed the page somewhere, since this is a frontend application which doesn't have the real backend, it uses mock backend mockbee and mirajeJs which on reloading srves entire mock backend again instead of persisting. So you might want to logout, reload and log in again with test credentials or signup again and use the features of this app without reloading"
+    );
   };
   return (
     <>

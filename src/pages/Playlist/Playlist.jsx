@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './playlist.scss';
-
-import { Sidebar, PlaylistCard, PlaylistModal } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import { Sidebar, PlaylistCard, PlaylistModal, Error } from '../../components';
 import { useVideo } from '../../context';
 import { totalVideosInPlaylists } from '../../utils';
 
@@ -9,6 +9,7 @@ const Playlist = () => {
   const [isPlaylistModalOpen, setIsPlaylistModalOpen] = useState(false);
   const { videoState } = useVideo();
   const [isEmpty, setIsEmpty] = useState(false);
+  const navigate = useNavigate();
   const handleCreatePlaylist = () => {
     setIsPlaylistModalOpen(true);
   };
@@ -41,11 +42,29 @@ const Playlist = () => {
             </button>
           </div>
           {isEmpty && (
-            <p className='text-xxl text-centered mt-5'>
-              No Playlist Available, Create one
-            </p>
+            <Error>
+              <p className='text-xl'> No Playlists Exist</p>
+              <p className='text-m'>
+                Playlist you have created would appear here, create one now!
+              </p>
+              <div>
+                <button
+                  className='btn btn-primary mr-3'
+                  onClick={handleCreatePlaylist}
+                >
+                  Create Playlist
+                </button>
+                <button
+                  className='btn btn-primary-outlined'
+                  onClick={() => {
+                    navigate('/home');
+                  }}
+                >
+                  Go To Home
+                </button>
+              </div>
+            </Error>
           )}
-
           <div className='video-container'>
             {videoState.playlists.map((playlist) => (
               <PlaylistCard playlist={playlist} />

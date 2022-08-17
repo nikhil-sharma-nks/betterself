@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './history.scss';
-import { Sidebar, VideoCard } from '../../components';
+import { Sidebar, VideoCard, Error } from '../../components';
 import { useVideo } from '../../context';
+import { useNavigate } from 'react-router-dom';
 
 const History = () => {
   const { videoState } = useVideo();
   const [historyCollection, setHistoryCollection] = useState([]);
   const [isEmpty, setIsEmpty] = useState(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
     let isAvailable = videoState.history.length > 0 ? false : true;
     setIsEmpty(isAvailable);
@@ -19,7 +22,22 @@ const History = () => {
         <Sidebar />
         <div className='main-body home-page history-page'>
           {isEmpty && (
-            <p className='text-xxl text-centered mt-5'>No Video In History</p>
+            <Error>
+              <p className='text-xl'>No Videos In History</p>
+              <p className='text-m'>
+                Videos you have watched would appear here
+              </p>
+              <div>
+                <button
+                  className='btn btn-primary'
+                  onClick={() => {
+                    navigate('/home');
+                  }}
+                >
+                  Go To Home
+                </button>
+              </div>
+            </Error>
           )}
           <div className='video-container'>
             {historyCollection.map((video) => (

@@ -39,3 +39,19 @@
     }
   }
 }
+
+@media (max-width: 700px) {
+  .home-page {
+    width: 100vw;
+    .category-pill-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      height: 4rem;
+      width: 100vw;
+      .category-pill {
+        width: fit-content;
+      }
+    }
+  }
+}
